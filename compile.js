@@ -1,3 +1,4 @@
+const { spawnSync } = require('child_process')
 const babel = require('../lightscript-babel/packages/babel-core')
 const transformed = babel.transformFileSync('src/index.js', {
   plugins: [
@@ -6,3 +7,7 @@ const transformed = babel.transformFileSync('src/index.js', {
 })
 console.log(transformed)
 console.log(transformed.code)
+
+const { stdout, stderr } = spawnSync('node', ['-e', transformed.code])
+console.log(stdout.toString());
+console.error(stderr.toString());

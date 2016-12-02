@@ -1,5 +1,5 @@
 
-for (let i = 0; i < 10; i++) {
+for let i = 0; i < 10; i++ {
   console.log(i);
 }
 
@@ -34,3 +34,15 @@ for x of arr {
 for k in arr {
   console.log(k);
 }
+
+obj := { a: 1, b: 2, c: 3 }
+
+for [ k, v ] of Object.entries(obj) {
+  console.log(k, v);
+}
+
+for { a, b } of [obj, obj] {
+  console.log(a, b);
+}
+
+if 0 + 1 === 1: console.log(1)
