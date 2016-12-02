@@ -5,7 +5,7 @@ const transformed = babel.transformFileSync('src/index.js', {
     require('../babel-plugin-lightscript').default
   ]
 })
-console.log(transformed)
+// console.log(transformed)
 console.log(transformed.code)
 
 const { stdout, stderr } = spawnSync('node', ['-e', transformed.code])
