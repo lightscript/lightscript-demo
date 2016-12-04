@@ -44,7 +44,13 @@ for { a, b } of [obj, obj] {
   console.log(a, b);
 }
 
-if 0 + 1 === 1: console.log(1)
+if 0 + 1 is 1: console.log(1)
+if 0 + 1 isnt 2: console.log(1)
+if 1 and 1: console.log(1)
+if 0 or 1: console.log(1)
+if not 1 or not 0: console.log(1)
+if not (0 or 0): console.log(1)
+
 
 for i from 0 til 10: console.log(i)
 for 0 til 10: console.log(2)
