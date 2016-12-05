@@ -87,3 +87,19 @@ function fn1(n) {
   return false
 }
 console.log(fn1(13))
+
+function b(...args) {
+  console.log(...args)
+  return args
+}
+obj~b(5);
+obj~console.log(5);
+obj.a~b(5, 5)
+obj.a~b(5, 5)~b().toString()~b()
+
+
+console.log(arr.0)
+console.log(arr.1)
+arr.50 = 8
+console.log(arr.50)
+console.log(obj.a.toString().0.0)
