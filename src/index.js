@@ -36,9 +36,9 @@ for k in arr {
   console.log(k);
 }
 
-for [ k, v ] of Object.entries(obj) {
-  console.log(k, v);
-}
+// for [ k, v ] of Object.entries(obj) {
+//   console.log(k, v);
+// }
 
 for { a, b } of [obj, obj] {
   console.log(a, b);
@@ -97,9 +97,65 @@ obj~console.log(5);
 obj.a~b(5, 5)
 obj.a~b(5, 5)~b().toString()~b()
 
+5~Math.pow(3)
 
 console.log(arr.0)
 console.log(arr.1)
 arr.50 = 8
 console.log(arr.50)
 console.log(obj.a.toString().0.0)
+
+
+for i from 0 til 4:
+  if i > 2:
+    for j from 5 til 7:
+      console.log(j)
+    break
+
+fn() -> 1
+fn2() -> {
+  return 2
+}
+fn3() ->
+  3
+  return 3
+
+fn4(x) ->
+  return x + 4
+
+fn5(x) ->
+  x
+  x + 4
+
+// fn5(fn6() -> blah)
+
+
+/*
+  functions
+  - both statements and expressions...
+    - statements, always named...
+      - identifier, parenL, bindingList, parenR, arrow, body
+    - expressions, named (as above) or unnamed...
+      - unnamed, want same as current arrows, but skinny recorded
+  - single-arrow definition
+  - double-arrow definition
+  - gen,async definition
+  - expression
+  - indent
+  - implicit return
+
+  bound
+  - class
+  - method
+  - disallow static
+
+  going to need to add `arrowType` to ArrowExpression node
+  and then in babel, rewrite skinny ones into FunctionExpressions, etc.
+  named arrows should be parsed into FunctionDeclarations,
+  and then some rewritten into ArrowExpressions in babel...
+  hmmm...
+  or maybe create a new ArrowDeclaration instead... yeah, that sounds better...
+
+  okay, where to start...
+  probably ArrowDeclaration
+ */
