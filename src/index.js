@@ -1,4 +1,7 @@
 // TODO: create actual test files
+function l(...args) {
+  console.log(...args)
+}
 
 arr := [3, 4, 5]
 obj := { a: 1, b: 2, c: 3 }
@@ -112,7 +115,15 @@ for i from 0 til 4:
       console.log(j)
     break
 
-fn() -> 1
+l("arrows:")
+
+fn() -> 0
+l(fn())
+
+fn1() ->
+  1
+l(fn1())
+
 fn2() -> {
   return 2
 }
@@ -127,22 +138,178 @@ fn5(x) ->
   x
   x + 4
 
-// fn5(fn6() -> blah)
+fn6(a, b, c) ->
+  a + b() + c
+
+l(fn6(1, fn7() -> 6, 2))
+l(fn6(1, fn7() => 6, 2))
+
+fn8() ->
+  let i = 0
+  for 0 til 3:
+    i++
+  i + 2
+l(fn8())
+
+fn81() ->
+  for i from 0 til 3:
+    i
+l(fn81())
+
+fn82() ->
+  for i from 0 til 3:
+    for j from 4 til 5:
+      i + j
+l(fn82())
+
+fn9() ->
+  if true:
+    1
+  else:
+    3
+
+l(fn9())
+
+fn10() ->
+  if false:
+    1
+  else:
+    3
+
+l(fn10())
+
+fn10() ->
+  if false:
+    1
+  else if true:
+    3
+  else:
+    4
+
+l(fn10())
+
+fn11(a) =>
+  if 1:
+    a
+  else:
+    2
+
+l(fn11(3))
+
+fn12(a) => a
+
+l(fn12(4))
+
+fn13() -*>
+  yield 1
+  yield 2
+
+for x of fn13():
+  l(x)
+
+fn14() -/>
+  await Promise.resolve(1)
+  x := await Promise.resolve(2)
+  l(x)
+  return await Promise.resolve(x)
+
+l(fn14())
+
+fn15() =/> 3
+l(fn15())
+
+fn16() =/> await Promise.resolve(1)
+l(fn16().then(l))
+
+fn17() ->
+  2
+  x := 7
+l(fn17())
+
+fn18 := () -/>
+  await 2
+  if 3:
+    3
+  4
+
+fn19 := () =/>
+  await 2
+  if 3:
+    3
+  4
+
+a =/> await a
+a -/> await a
+a -*> yield a
+a -*> {
+  yield a
+}
+a -/>
+  await a
+  await a
+a =/>
+  await a
+  await a
+a =/> {
+  await a
+  await a
+}
+() =/> {
+  await a
+  await a
+}
+
+obj2 := {
+  a: 7
+  x() ->
+    2
+    3
+  y() -/>
+    await 1
+  z() => this.a
+}
+l(obj2.z())
+
+class A extends Object {
+  constructor() ->
+    this.foo = "foo"
+    this.bar = "bar"
+    super()
+  a() -> 1
+  b() -/> 2
+  c() => this.foo
+  get d() -> this.foo
+  set d(n) -> this.foo = n
+  static e() -> 3
+
+  // todo: disallow bound static, bound constructor
+  static f() => 4
+}
+
+// TODO:
+// class B:
+//   a() ->
+//     1
+//     2
+//   b() =>
+//     3
+//     4
+
 
 
 /*
   functions
   - both statements and expressions...
-    - statements, always named...
+    x statements, always named...
       - identifier, parenL, bindingList, parenR, arrow, body
     - expressions, named (as above) or unnamed...
       - unnamed, want same as current arrows, but skinny recorded
-  - single-arrow definition
-  - double-arrow definition
-  - gen,async definition
+  x skinny-arrow definition
+  x fat-arrow definition
+  x gen,async definition
   - expression
-  - indent
-  - implicit return
+  x indent
+  x implicit return
 
   bound
   - class
