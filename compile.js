@@ -9,5 +9,5 @@ console.dir(transformed.ast.program.body, { depth: null })
 console.log(transformed.code)
 
 const { stdout, stderr } = spawnSync('node', ['--harmony-async-await', '-e', transformed.code])
-console.log(stdout.toString());
+// console.log(stdout.toString());
 console.error(stderr.toString());
